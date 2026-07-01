@@ -8,6 +8,10 @@ import subprocess
 import signal
 import sys
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
 
 # Configuration
 BASE_URL = "http://localhost:8000"
