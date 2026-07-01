@@ -1,6 +1,6 @@
 import logging
 from fastapi import FastAPI, Request
-from config import Settings
+from .config import Settings
 
 # Configure logging
 logging.basicConfig(
@@ -70,17 +70,3 @@ async def webhook(request: Request):
     except Exception as e:
         logger.error(f"Error processing webhook: {e}", exc_info=True)
         return {"status": "error", "message": str(e)}
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    logger.info(f"Starting server on port {settings.webhook_port}")
-    logger.info(f"Configured repo: {settings.repo_full_name}")
-
-    uvicorn.run(
-        app,
-        host="0.0.0.0",
-        port=settings.webhook_port,
-        log_level="info"
-    )
